@@ -17,6 +17,7 @@ namespace EFCore_Template
             builder.Entity<Customer>(e =>
             {
                 e.HasKey(e => e.CustomerId);
+                e.Property(e => e.CustomerId).UseIdentityColumn();
 
                 e.HasMany(c => c.Orders)
                  .WithOne(o => o.Customer)
@@ -26,6 +27,7 @@ namespace EFCore_Template
             builder.Entity<Product>(e =>
             {
                 e.HasKey(e => e.ProductId);
+                e.Property(e => e.ProductId).UseIdentityColumn();
 
                 e.HasMany(c => c.Orders)
                  .WithOne(o => o.Product)
@@ -34,7 +36,8 @@ namespace EFCore_Template
 
             builder.Entity<Order>(e =>
             {
-                e.HasKey(o => o.CustomerId);
+                e.HasKey(o => o.OrderId);
+                e.Property(e => e.OrderId).UseIdentityColumn();
             });
         }
     }
