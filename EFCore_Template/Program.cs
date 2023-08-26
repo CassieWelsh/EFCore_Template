@@ -8,9 +8,20 @@ namespace EFCore_Template
     {
         static void Main(string[] args)
         {
-            var p = new SampleContextFactory();
+            var factory = new SampleContextFactory();
 
-            using var context = p.CreateDbContext(args);
+            using var context = factory.CreateDbContext(args);
+
+            //var c = new Customer { Name = "Customer1", BirthDate = DateTime.UtcNow };
+            //var p = new Product { Name = "Product1", Cost = 123m };
+            //var o = new Order { Customer = c, Product = p };
+
+            //context.Customers.Add(c);
+            //context.Products.Add(p);
+            //context.Orders.Add(o);
+            //context.SaveChanges();
+
+            var o = context.Orders.Where(o => o.CustomerId == 1).ToQueryString();
         }
     }
 

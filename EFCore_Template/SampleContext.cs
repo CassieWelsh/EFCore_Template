@@ -38,6 +38,10 @@ namespace EFCore_Template
             {
                 e.HasKey(o => o.OrderId);
                 e.Property(e => e.OrderId).UseIdentityColumn();
+                e.Property(e => e.CreatedTime).HasDefaultValueSql(@"(now() at time zone 'utc')");
+
+                e.Navigation(e => e.Customer).AutoInclude();
+                e.Navigation(e => e.Product).AutoInclude();
             });
         }
     }
