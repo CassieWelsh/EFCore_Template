@@ -45,33 +45,4 @@ namespace EFCore_Template
             });
         }
     }
-
-    public class Product
-    {
-        public long ProductId { get; set; }
-        public required string Name { get; set; }
-        public decimal Cost { get; set; }
-
-        public ICollection<Order> Orders { get; set; }
-    }
-
-    public class Order
-    {
-        public long OrderId { get; set; }
-        public long ProductId { get; set; }
-        public long CustomerId { get; set; }
-        public DateTime CreatedTime { get; set; }
-
-        public required Product Product { get; set; }
-        public required Customer Customer { get; set; }
-    }
-
-    public class Customer
-    {
-        public long CustomerId { get; set; }
-        public string Name { get; set; }
-        public DateTime BirthDate { get; set; }
-
-        public ICollection<Order> Orders { get; set; }
-    }
 }
